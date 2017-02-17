@@ -99,6 +99,7 @@ class ServerTest extends TestCase
         $server->setEmitter($emmiter);
 
         $this->expectOutputString('');
+        ob_start();
         $server->listen();
         ob_end_flush();
     }
@@ -143,6 +144,7 @@ class ServerTest extends TestCase
         $server = Server::createServer($callback, $server, [], [], [], []);
 
         $this->expectOutputString('FOOBAR');
+        ob_start();
         $server->listen();
         ob_end_flush();
 
@@ -169,6 +171,7 @@ class ServerTest extends TestCase
         $server = Server::createServer($callback, $server, [], [], [], []);
 
         $this->expectOutputString('FOOBAR');
+        ob_start();
         $server->listen();
         ob_end_flush();
 
@@ -194,6 +197,7 @@ class ServerTest extends TestCase
         $server = Server::createServer($callback, $server, [], [], [], []);
 
         $this->expectOutputString('100%');
+        ob_start();
         $server->listen();
         ob_end_flush();
 
@@ -223,6 +227,7 @@ class ServerTest extends TestCase
         };
         $server = Server::createServer($callback, $server, [], [], [], []);
 
+        ob_start();
         $server->listen();
         ob_end_flush();
 
@@ -301,6 +306,7 @@ class ServerTest extends TestCase
             $this->request,
             $this->response
         );
+        ob_start();
         $server->listen($final);
         ob_end_flush();
         $this->assertTrue($invoked);
